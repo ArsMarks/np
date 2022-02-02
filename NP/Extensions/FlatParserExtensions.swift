@@ -12,7 +12,11 @@ protocol FlatParserDelegate: AnyObject {
 }
 
 extension FlatParser: XMLParserDelegate {
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+    func parser(_ parser: XMLParser,
+                didStartElement elementName: String,
+                namespaceURI: String?,
+                qualifiedName qName: String?,
+                attributes attributeDict: [String : String] = [:]) {
         if elementName == "object" {
             flatID = ""
             buildingName = []
@@ -26,18 +30,29 @@ extension FlatParser: XMLParserDelegate {
         }
         self.elementName = elementName
     }
-    
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        
+
+    func parser(_ parser: XMLParser,
+                didEndElement elementName: String,
+                namespaceURI: String?,
+                qualifiedName qName: String?) {
+
         if elementName == "object" {
-            let flat = Flat(flatID: flatID, buildingName: buildingName, price: price, square: square, floorCount: floorCount, roomsCount: roomsCount, wcCount: wcCount, flatDescription: flatDescription, photo: photo)
+            let flat = Flat(flatID: flatID,
+                            buildingName: buildingName,
+                            price: price,
+                            square: square,
+                            floorCount: floorCount,
+                            roomsCount: roomsCount,
+                            wcCount: wcCount,
+                            flatDescription: flatDescription,
+                            photo: photo)
             self.flat.append(flat)
         }
     }
-    
+
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        
+
         if (!data.isEmpty) {
             if self.elementName == "ExternalId" {
                 flatID += data

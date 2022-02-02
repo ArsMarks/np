@@ -9,13 +9,13 @@ import UIKit
 import SnapKit
 
 class SMSVerificationView: UIView {
-    
+
     private let enterSMSCodeLabel: UILabel = {
         let label = UILabel()
         label.text = "Для входа в аккаунт введите код из SMS"
         return label
     }()
-    
+
     let smsCodeTextField: UITextField = {
         let field = UITextField()
         field.keyboardType = .numberPad
@@ -24,7 +24,7 @@ class SMSVerificationView: UIView {
         field.textAlignment = .center
         return field
     }()
-    
+
     let doneButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Далее", for: .normal)
@@ -43,7 +43,7 @@ class SMSVerificationView: UIView {
         setupSubviews()
         setupConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -53,20 +53,20 @@ class SMSVerificationView: UIView {
             self.addSubview(views)
         }
     }
-    
+
     private func setupConstraints() {
         enterSMSCodeLabel.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(40)
             make.centerX.equalToSuperview()
         }
-        
+
         smsCodeTextField.snp.makeConstraints { make in
             make.top.equalTo(enterSMSCodeLabel.snp.bottom).offset(20)
             make.leading.equalTo(self.safeAreaLayoutGuide).offset(30)
             make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-30)
             make.height.equalTo(50)
         }
-        
+
         doneButton.snp.makeConstraints { make in
             make.top.equalTo(smsCodeTextField.snp.bottom).offset(20)
             make.height.equalTo(50)

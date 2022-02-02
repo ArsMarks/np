@@ -14,7 +14,7 @@ class EmailSender {
     static let senderEmail = "news@evspb.ru"
     static let subject = "New lead"
     static let listId = "20028626"
-    
+
     static var urlQuote: URLComponents = {
         var resultURL = URLComponents()
         resultURL.scheme = "https"
@@ -22,11 +22,18 @@ class EmailSender {
         resultURL.path = "/ru/api/sendEmail"
         return resultURL
     }()
-    
+
     static func setupURL(body: String) {
-        urlQuote.queryItems = [URLQueryItem(name: "format", value: "json"), URLQueryItem(name: "api_key", value: apiKey), URLQueryItem(name: "email", value: email), URLQueryItem(name: "sender_name", value: senderName), URLQueryItem(name: "sender_email", value: senderEmail), URLQueryItem(name: "subject", value: subject), URLQueryItem(name: "body", value: body), URLQueryItem(name: "list_id", value: listId)]
+        urlQuote.queryItems = [URLQueryItem(name: "format", value: "json"),
+                               URLQueryItem(name: "api_key", value: apiKey),
+                               URLQueryItem(name: "email", value: email),
+                               URLQueryItem(name: "sender_name", value: senderName),
+                               URLQueryItem(name: "sender_email", value: senderEmail),
+                               URLQueryItem(name: "subject", value: subject),
+                               URLQueryItem(name: "body", value: body),
+                               URLQueryItem(name: "list_id", value: listId)]
     }
-    
+
     static func sendEmail(body: String) {
         setupURL(body: body)
         URLSession.shared.dataTask(with: urlQuote.url!) { data, response, error in

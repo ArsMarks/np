@@ -8,9 +8,9 @@
 import Foundation
 
 class FlatParser: NSObject {
-    
+
     weak var delegate: FlatParserDelegate?
-    
+
     var flat: [Flat] = []
     var elementName = ""
     var flatID = ""
@@ -22,7 +22,7 @@ class FlatParser: NSObject {
     var wcCount = ""
     var flatDescription = ""
     var photo: [String] = []
-    
+
     let urlQuote: URLComponents = {
         var resultURL = URLComponents()
         resultURL.scheme = "https"
@@ -30,7 +30,7 @@ class FlatParser: NSObject {
         resultURL.path = "/cian.xml"
         return resultURL
     }()
-    
+
     let session = URLSession.shared
 
     func flatParse() {

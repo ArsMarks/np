@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class FlatReserveView: UIView {
-    
+
     let callButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Позвонить", for: .normal)
@@ -17,7 +17,7 @@ class FlatReserveView: UIView {
         button.titleLabel?.font = .systemFont(ofSize: 18)
         return button
     }()
-    
+
     let telegramButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Написать в Telegram", for: .normal)
@@ -25,7 +25,7 @@ class FlatReserveView: UIView {
         button.titleLabel?.font = .systemFont(ofSize: 18)
         return button
     }()
-    
+
     let whatsAppButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Написать в WhatsApp", for: .normal)
@@ -33,7 +33,7 @@ class FlatReserveView: UIView {
         button.titleLabel?.font = .systemFont(ofSize: 18)
         return button
     }()
-    
+
     let registrationForViewButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Записаться на просмотр", for: .normal)
@@ -41,7 +41,7 @@ class FlatReserveView: UIView {
         button.titleLabel?.font = .systemFont(ofSize: 18)
         return button
     }()
-    
+
     let callBackButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Заказать обратный звонок", for: .normal)
@@ -49,7 +49,7 @@ class FlatReserveView: UIView {
         button.titleLabel?.font = .systemFont(ofSize: 18)
         return button
     }()
-    
+
     let cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Отмена", for: .normal)
@@ -58,7 +58,7 @@ class FlatReserveView: UIView {
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
         return button
     }()
-    
+
     private let lineView: UIView = {
         let lineView = UIView()
         lineView.layer.borderWidth = 5.0
@@ -66,7 +66,7 @@ class FlatReserveView: UIView {
         lineView.layer.cornerRadius = 3
         return lineView
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .systemBackground
@@ -74,17 +74,23 @@ class FlatReserveView: UIView {
         setupConstraints()
         setupButtons()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupSubviews() {
-        [lineView, callButton, telegramButton, whatsAppButton, registrationForViewButton, callBackButton, cancelButton].forEach { views in
+        [lineView,
+         callButton,
+         telegramButton,
+         whatsAppButton,
+         registrationForViewButton,
+         callBackButton,
+         cancelButton].forEach { views in
             addSubview(views)
         }
     }
-    
+
     private func setupConstraints() {
         lineView.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(10)
@@ -92,7 +98,7 @@ class FlatReserveView: UIView {
             make.width.equalTo(45)
             make.height.equalTo(5)
         }
-        
+
         callButton.snp.makeConstraints { make in
             make.trailing.leading.equalTo(self.safeAreaLayoutGuide)
             make.height.equalTo(50)
@@ -131,7 +137,7 @@ class FlatReserveView: UIView {
             make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-30)
         }
     }
-    
+
     func setupButtons() {
         let buttons = [callButton, telegramButton, whatsAppButton, registrationForViewButton, callBackButton]
         buttons.forEach { buttons in

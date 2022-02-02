@@ -9,16 +9,16 @@ import UIKit
 import SnapKit
 
 class FlatsTableViewController: UIViewController {
-    
+
     private let flatsTableViewCell = FlatsTableViewCell()
-    
+
     var flats: [Flat] = []
-    
+
     let flatsTableView = UITableView()
-    
+
     private let sortImageUp = UIImage(named: "priceSortUp")
     private let sortImageDown = UIImage(named: "priceSortDown")
-    
+
     private let priceSortingButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(" По цене", for: .normal)
@@ -27,30 +27,30 @@ class FlatsTableViewController: UIViewController {
         button.sizeToFit()
         return button
     }()
-    
+
     init(flats: [Flat]) {
         self.flats = flats
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupTableView()
         setupRightBarButtonItem()
     }
-    
+
     private func setupRightBarButtonItem() {
         let barButton = UIBarButtonItem(customView: priceSortingButton)
         navigationItem.rightBarButtonItem = barButton
         priceSortingButton.addTarget(self, action: #selector(rightButtonAction), for: .touchUpInside)
         priceSortingButton.setImage(sortImageDown, for: .normal)
     }
-    
+
     private func setupTableView() {
         view.addSubview(flatsTableView)
         flatsTableView.register(FlatsTableViewCell.self, forCellReuseIdentifier: Cell.tableViewCell)
@@ -58,7 +58,7 @@ class FlatsTableViewController: UIViewController {
         flatsTableView.dataSource = self
         flatsTableView.frame = view.bounds
     }
-    
+
     @objc func rightButtonAction() {
         if priceSortingButton.imageView?.image == sortImageDown {
             flats = flats.sorted { $0.price < $1.price }
@@ -66,7 +66,6 @@ class FlatsTableViewController: UIViewController {
         } else {
             flats = flats.sorted { $0.price > $1.price }
             priceSortingButton.setImage(sortImageDown, for: .normal)
-            
         }
 
         flatsTableView.reloadData()

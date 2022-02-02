@@ -23,7 +23,7 @@ class TabBarController: UITabBarController {
         let favoriteVC = UINavigationController(rootViewController: FavoriteViewController())
         let profileVC = UINavigationController(rootViewController: ProfileViewController())
         let profileWithoutAuthVC = UINavigationController(rootViewController: ProfileWithoutAuthViewController())
-        
+
         filterVC.title = "Подобрать квартиру"
         favoriteVC.title = "Избранное"
         [profileVC, profileWithoutAuthVC].forEach({ viewControllers in
@@ -34,15 +34,14 @@ class TabBarController: UITabBarController {
         filterVC.tabBarItem.image = UIImage(named: "home")
         favoriteVC.tabBarItem.image = UIImage(named: "favorite")
         self.viewControllers = [filterVC, favoriteVC, profileWithoutAuthVC]
-        
-        Auth.auth().addStateDidChangeListener { auth, user in
+
+        Auth.auth().addStateDidChangeListener { _, user in
             if user == nil {
                 self.viewControllers = [filterVC, favoriteVC, profileWithoutAuthVC]
             } else {
                 self.viewControllers = [filterVC, favoriteVC, profileVC]
             }
         }
-        
         self.selectedViewController = filterVC
     }
 }

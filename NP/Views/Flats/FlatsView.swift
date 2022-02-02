@@ -9,13 +9,13 @@ import UIKit
 import SnapKit
 
 class FlatsView: UIView {
-    
+
     var photos: [UIImage] = []
-    
+
     private let scrollView = UIScrollView()
-    
+
     private let contentView = UIView()
-    
+
     let photoCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -25,39 +25,39 @@ class FlatsView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
-    
+
     let pageContol = UIPageControl()
-    
+
     let activityIndicator = UIActivityIndicatorView()
-    
+
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 18)
         return label
     }()
-    
+
     let priceLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 18)
         label.textColor = Color.brandRed
         return label
     }()
-    
+
     let pricePerMeterLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12)
         label.textColor = Color.brandGray
         return label
     }()
-    
+
     let favoriteButton: UIButton = {
         let button = UIButton(type: .system)
         let color = Color.brandRed
-        
+
         button.setTitle("В избранное", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14)
         button.setTitleColor(color, for: .normal)
-        
+
         let image = UIImage(systemName: "star")?.withTintColor(color, renderingMode: .alwaysOriginal)
         button.setImage(image, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
@@ -65,25 +65,25 @@ class FlatsView: UIView {
     }()
 
     let propertiesView = UIView()
-    
+
     private let squareIcon: UIImageView = {
         let photo = UIImageView()
         photo.image = UIImage(named: "square")
         return photo
     }()
-    
+
     private let roomsIcon: UIImageView = {
         let photo = UIImageView()
         photo.image = UIImage(named: "roomsCount")
         return photo
     }()
-    
+
     private let wcRoomsIcon: UIImageView = {
         let photo = UIImageView()
         photo.image = UIImage(named: "wcRoomsCount")
         return photo
     }()
-    
+
     private let squareTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Площадь"
@@ -91,7 +91,7 @@ class FlatsView: UIView {
         label.textColor = Color.brandGray
         return label
     }()
-    
+
     private let roomsTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Спальни"
@@ -99,7 +99,7 @@ class FlatsView: UIView {
         label.textColor = Color.brandGray
         return label
     }()
-    
+
     private let wcRoomsTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Ванные комнаты"
@@ -107,35 +107,35 @@ class FlatsView: UIView {
         label.textColor = Color.brandGray
         return label
     }()
-    
+
     let squareLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textColor = Color.brandRed
         return label
     }()
-    
+
     let roomsLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16)
         label.textColor = Color.brandRed
         return label
     }()
-    
+
     let wcRoomsLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16)
         label.textColor = Color.brandRed
         return label
     }()
-    
+
     let flatDescription: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.numberOfLines = 0
         return label
     }()
-    
+
     let reserveButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = Color.brandRed
@@ -147,7 +147,7 @@ class FlatsView: UIView {
         button.layer.borderColor = Color.brandRed.cgColor
         return button
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .systemBackground
@@ -155,22 +155,39 @@ class FlatsView: UIView {
         setupConstraints()
         propertiesView.setupSublayers()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupSubviews() {
         self.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        [squareIcon, squareTitleLabel, squareLabel, roomsIcon, roomsTitleLabel, roomsLabel, wcRoomsIcon, wcRoomsTitleLabel, wcRoomsLabel].forEach { views in
+        [squareIcon,
+         squareTitleLabel,
+         squareLabel,
+         roomsIcon,
+         roomsTitleLabel,
+         roomsLabel,
+         wcRoomsIcon,
+         wcRoomsTitleLabel,
+         wcRoomsLabel].forEach { views in
             propertiesView.addSubview(views)
         }
-        [photoCollectionView, activityIndicator, pageContol, titleLabel, priceLabel, pricePerMeterLabel, favoriteButton, propertiesView, flatDescription, reserveButton].forEach { views in
+        [photoCollectionView,
+         activityIndicator,
+         pageContol,
+         titleLabel,
+         priceLabel,
+         pricePerMeterLabel,
+         favoriteButton,
+         propertiesView,
+         flatDescription,
+         reserveButton].forEach { views in
             contentView.addSubview(views)
         }
     }
-    
+
     private func setupConstraints() {
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
@@ -179,7 +196,7 @@ class FlatsView: UIView {
             make.right.equalTo(self.snp.right)
             make.centerX.equalTo(self.snp.centerX)
         }
-        
+
         contentView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top)
             make.bottom.equalTo(scrollView.snp.bottom)
@@ -193,11 +210,11 @@ class FlatsView: UIView {
             make.leading.trailing.equalTo(self.safeAreaLayoutGuide)
             make.height.equalTo(UIScreen.main.bounds.width/1.5)
         }
-        
+
         activityIndicator.snp.makeConstraints { make in
             make.center.equalTo(photoCollectionView.snp.center)
         }
-        
+
         pageContol.snp.makeConstraints { make in
             make.leading.equalTo(self.safeAreaLayoutGuide)
             make.trailing.equalTo(self.safeAreaLayoutGuide)

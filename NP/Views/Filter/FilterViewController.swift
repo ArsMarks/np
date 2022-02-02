@@ -9,22 +9,22 @@ import UIKit
 import SnapKit
 
 class FilterViewController: UIViewController {
-    
+
     let filterView = FilterView()
-    
+
     let filterLogic = FilterLogic()
-    
+
     var buttonsDict: [String: Bool] = [:]
     private var maxPrice = ""
     private var minSquare = ""
     var maxPriceFromTextField: Float = 0
     var minSquareFromTextField: Float = 0
-    
+
     override func loadView() {
         super.loadView()
         view = filterView
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Подобрать квартиру"
@@ -35,7 +35,7 @@ class FilterViewController: UIViewController {
         setupFlats()
         setupFirstData()
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         [filterView.priceView, filterView.squareView].forEach { views in
@@ -44,26 +44,37 @@ class FilterViewController: UIViewController {
             views.layer.cornerRadius = 3
         }
     }
-    
+
     private func setupButtons() {
-        let buttons = [filterView.studioRoomButton, filterView.oneRoomButton, filterView.twoRoomButton, filterView.threeRoomButton, filterView.fourRoomButton, filterView.fourPlusRoomButton]
+        let buttons = [filterView.studioRoomButton,
+                       filterView.oneRoomButton,
+                       filterView.twoRoomButton,
+                       filterView.threeRoomButton,
+                       filterView.fourRoomButton,
+                       filterView.fourPlusRoomButton]
         buttons.forEach { button in
-            button.addTarget(self, action: #selector(roomButtonsTapped(sender:)), for: .touchUpInside)
+            button.addTarget(self,
+                             action: #selector(roomButtonsTapped(sender:)),
+                             for: .touchUpInside)
         }
-        
-        filterView.filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
-        filterView.clearFilterButton.addTarget(self, action: #selector(clearFilterButtonTapped(sender:)), for: .touchUpInside)
+
+        filterView.filterButton.addTarget(self,
+                                          action: #selector(filterButtonTapped),
+                                          for: .touchUpInside)
+        filterView.clearFilterButton.addTarget(self,
+                                               action: #selector(clearFilterButtonTapped(sender:)),
+                                               for: .touchUpInside)
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
     }
-    
+
     @objc func doneClicked() {
         self.view.endEditing(true)
     }
-    
+
     private func setupToolbarForTextField() {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -79,7 +90,7 @@ class FilterViewController: UIViewController {
             field.inputAccessoryView = toolbar
         }
     }
-    
+
     @objc func roomButtonsTapped(sender: UIButton!) {
         guard let buttonName = sender.titleLabel?.text else { return }
         setupPriceAndSquare()
@@ -88,20 +99,29 @@ class FilterViewController: UIViewController {
             sender.setTitleColor(.white, for: .normal)
             buttonsDict.updateValue(true, forKey: buttonName)
             filterLogic.flatsFiltered = []
-            self.filterLogic.filterFlats(price: self.maxPriceFromTextField, square: (self.minSquareFromTextField), buttonsDict: self.buttonsDict)
+            self.filterLogic.filterFlats(price: self.maxPriceFromTextField,
+                                         square: (self.minSquareFromTextField),
+                                         buttonsDict: self.buttonsDict)
             setupFilterButton()
         } else {
             sender.backgroundColor = .systemBackground
             sender.setTitleColor(.label, for: .normal)
             buttonsDict.removeValue(forKey: buttonName)
             filterLogic.flatsFiltered = []
-            self.filterLogic.filterFlats(price: self.maxPriceFromTextField, square: (self.minSquareFromTextField), buttonsDict: self.buttonsDict)
+            self.filterLogic.filterFlats(price: self.maxPriceFromTextField,
+                                         square: (self.minSquareFromTextField),
+                                         buttonsDict: self.buttonsDict)
             setupFilterButton()
         }
     }
-    
+
     @objc func clearFilterButtonTapped(sender: UIButton!) {
-        let buttons = [filterView.studioRoomButton, filterView.oneRoomButton, filterView.twoRoomButton, filterView.threeRoomButton, filterView.fourRoomButton, filterView.fourPlusRoomButton]
+        let buttons = [filterView.studioRoomButton,
+                       filterView.oneRoomButton,
+                       filterView.twoRoomButton,
+                       filterView.threeRoomButton,
+                       filterView.fourRoomButton,
+                       filterView.fourPlusRoomButton]
         buttons.forEach { button in
             button.backgroundColor = .systemBackground
             button.setTitleColor(.label, for: .normal)
@@ -112,12 +132,12 @@ class FilterViewController: UIViewController {
         filterView.priceTextField.text = nil
         setupFirstData()
     }
-    
+
     private func setupFlats() {
         filterLogic.setupFlats()
         filterLogic.calculateMinPriceAndSquare()
     }
-    
+
     private func setupFirstData() {
         DispatchQueue.main.async {
             guard let maxPrice = self.filterLogic.maxPrice else { return }
@@ -132,7 +152,7 @@ class FilterViewController: UIViewController {
             self.setupFilterButton()
         }
     }
-    
+
     func setupFilterButton() {
         DispatchQueue.main.async {
             let flatsCount = self.filterLogic.flatsFiltered.count
@@ -148,7 +168,7 @@ class FilterViewController: UIViewController {
             }
         }
     }
-    
+
     func setupPriceAndSquare() {
         if filterView.priceTextField.text != "" && filterView.priceTextField.text != nil {
             maxPriceFromTextField = (filterView.priceTextField.text! as NSString).floatValue * 1_000_000
@@ -161,13 +181,15 @@ class FilterViewController: UIViewController {
             minSquareFromTextField = (minSquare as NSString).floatValue
         }
     }
-    
+
     private func showAlert() {
-        let alert = UIAlertController(title: "Ошибка", message: "Объекты по выбранным фильтрам не найдены.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Ошибка",
+                                      message: "Объекты по выбранным фильтрам не найдены.",
+                                      preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
+
     @objc func filterButtonTapped(sender: UIButton) {
         let flats = filterLogic.flatsFiltered
         let flatsTableVC = FlatsTableViewController(flats: flats)

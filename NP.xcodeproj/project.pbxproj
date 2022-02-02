@@ -29,12 +29,14 @@
 		AA19BE072784AE3400664E3E /* FlatsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA19BE062784AE3400664E3E /* FlatsExtensions.swift */; };
 		AA19BE092784B00900664E3E /* FlatsTableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA19BE082784B00900664E3E /* FlatsTableViewExtensions.swift */; };
 		AA19BE0B2784B07700664E3E /* FlatsViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA19BE0A2784B07700664E3E /* FlatsViewControllerExtensions.swift */; };
+		AA20DF5C27AADB0400518490 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA20DF5B27AADB0400518490 /* Errors.swift */; };
 		AA32B6FB275F8959007A465F /* SMSVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32B6FA275F8959007A465F /* SMSVerificationViewController.swift */; };
 		AA689B1E2774CC7C009AA89F /* FavoriteFlats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA689B1C2774CC7C009AA89F /* FavoriteFlats.xcdatamodeld */; };
 		AA72939F2752389300D95497 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA72939E2752389300D95497 /* AuthorizationViewController.swift */; };
 		AA79A8512770DF75007DD9E1 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79A8502770DF75007DD9E1 /* PresentationController.swift */; };
 		AA79A85927719F25007DD9E1 /* ReserveFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79A85827719F25007DD9E1 /* ReserveFormViewController.swift */; };
 		AA79A85B2772228A007DD9E1 /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79A85A2772228A007DD9E1 /* EmailSender.swift */; };
+		AA85E3C227A84087003F3BD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA85E3C127A84087003F3BD3 /* GoogleService-Info.plist */; };
 		AA8C19482785D49A00976F8C /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8C19472785D49A00976F8C /* AuthorizationView.swift */; };
 		AAAE4F002762648200E9E6D9 /* ProfileWithoutAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE4EFF2762648200E9E6D9 /* ProfileWithoutAuthViewController.swift */; };
 		AAAE4F042763EC8600E9E6D9 /* FlatParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE4F032763EC8600E9E6D9 /* FlatParser.swift */; };
@@ -79,12 +81,14 @@
 		AA19BE062784AE3400664E3E /* FlatsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatsExtensions.swift; sourceTree = "<group>"; };
 		AA19BE082784B00900664E3E /* FlatsTableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatsTableViewExtensions.swift; sourceTree = "<group>"; };
 		AA19BE0A2784B07700664E3E /* FlatsViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatsViewControllerExtensions.swift; sourceTree = "<group>"; };
+		AA20DF5B27AADB0400518490 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		AA32B6FA275F8959007A465F /* SMSVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSVerificationViewController.swift; sourceTree = "<group>"; };
 		AA689B1D2774CC7C009AA89F /* FavoriteFlats.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteFlats.xcdatamodel; sourceTree = "<group>"; };
 		AA72939E2752389300D95497 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		AA79A8502770DF75007DD9E1 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		AA79A85827719F25007DD9E1 /* ReserveFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReserveFormViewController.swift; sourceTree = "<group>"; };
 		AA79A85A2772228A007DD9E1 /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
+		AA85E3C127A84087003F3BD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AA8C19472785D49A00976F8C /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		AAAE4EFF2762648200E9E6D9 /* ProfileWithoutAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWithoutAuthViewController.swift; sourceTree = "<group>"; };
 		AAAE4F032763EC8600E9E6D9 /* FlatParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatParser.swift; sourceTree = "<group>"; };
@@ -251,6 +255,7 @@
 			children = (
 				AAFBB6FD2751422100FE57F1 /* Assets.xcassets */,
 				AA689B1C2774CC7C009AA89F /* FavoriteFlats.xcdatamodeld */,
+				AA85E3C127A84087003F3BD3 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 			children = (
 				AAAE4F062763ED1900E9E6D9 /* FlatModel.swift */,
 				AAE8E449276B028900020D45 /* Cell.swift */,
+				AA20DF5B27AADB0400518490 /* Errors.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -324,6 +330,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAFBB7052751422100FE57F1 /* Build configuration list for PBXNativeTarget "NP" */;
 			buildPhases = (
+				AA878E7827AA485F00FB664E /* ShellScript */,
 				0F73798EABC373FDEBE193D9 /* [CP] Check Pods Manifest.lock */,
 				AAFBB6ED2751422100FE57F1 /* Sources */,
 				AAFBB6EE2751422100FE57F1 /* Frameworks */,
@@ -379,6 +386,7 @@
 			files = (
 				AAFBB7012751422100FE57F1 /* LaunchScreen.storyboard in Resources */,
 				AAFBB6FE2751422100FE57F1 /* Assets.xcassets in Resources */,
+				AA85E3C227A84087003F3BD3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +432,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NP/Pods-NP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AA878E7827AA485F00FB664E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -447,6 +472,7 @@
 				AA19BDFD2784A9DF00664E3E /* FlatParserExtensions.swift in Sources */,
 				AABED0A2276F8C31006D5B32 /* FlatReserveViewController.swift in Sources */,
 				AA72939F2752389300D95497 /* AuthorizationViewController.swift in Sources */,
+				AA20DF5C27AADB0400518490 /* Errors.swift in Sources */,
 				AA0D26622786242700EFBC39 /* ReserveFormView.swift in Sources */,
 				AA0D265E278610E100EFBC39 /* FlatsView.swift in Sources */,
 				AAFBB6F72751422100FE57F1 /* SceneDelegate.swift in Sources */,

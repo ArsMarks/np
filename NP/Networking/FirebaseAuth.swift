@@ -9,10 +9,10 @@ import Foundation
 import Firebase
 
 class FirebaseAuth {
-    
+
     func authWithNumber(phoneNumber: String, completion: @escaping (Result<String, Error>) -> Void) {
         PhoneAuthProvider.provider()
-            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] verificationID, error in
+            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
               if let error = error {
                   completion(.failure(error))
                 return
@@ -23,11 +23,12 @@ class FirebaseAuth {
               }
           }
     }
-    
+
     func checkSms<T: AnyObject>(smsCode: String, verifyID: String, completion: @escaping (Result<T?, Error>) -> Void) {
-        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verifyID, verificationCode: smsCode)
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verifyID,
+                                                                 verificationCode: smsCode)
         Auth.auth().languageCode = "ru"
-        Auth.auth().signIn(with: credential) { [weak self] success, error in
+        Auth.auth().signIn(with: credential) { success, error in
             if let error = error {
                 completion(.failure(error))
             } else {
@@ -35,10 +36,9 @@ class FirebaseAuth {
             }
         }
     }
-    
+
     func getDisplayName(completion: @escaping (String) -> Void) {
         guard let name = Auth.auth().currentUser?.displayName else { return }
         completion(name)
     }
 }
-

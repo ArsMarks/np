@@ -8,11 +8,13 @@
 import UIKit
 
 extension FilterViewController: UITextFieldDelegate {
-    
+
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         setupPriceAndSquare()
         filterLogic.flatsFiltered = []
-        self.filterLogic.filterFlats(price: self.maxPriceFromTextField, square: (self.minSquareFromTextField), buttonsDict: self.buttonsDict)
+        self.filterLogic.filterFlats(price: self.maxPriceFromTextField,
+                                     square: self.minSquareFromTextField,
+                                     buttonsDict: self.buttonsDict)
         setupFilterButton()
         return true
     }
